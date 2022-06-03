@@ -8,14 +8,70 @@ console.log("Hallo du");
 //   features: ["Navi", "dads"],
 // };
 
+// const encode_button = document.getElementById("erster");
+
+// encode_button.style = "color: red";
+
+// encode_button.innerHTML = "Lümmel";
+
+// setInterval(() => {
+//   encode_button.style = "color: red";
+
+//   encode_button.innerHTML = Math.random().toString();
+// }, 1000);
+
 const encode_button = document.getElementById("erster");
+const decode_button = document.getElementById("zweiter");
+const input_area = document.getElementById("input");
+const output_area = document.getElementById("output");
+const letterlist = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split(
+  ""
+);
 
-encode_button.style = "color: red";
+function encode(text) {
+  let textarr = text.split("");
+  for (let i = 0; i < textarr.length; i++) {
+    let l = textarr[i];
+    let indexInLetterlist = letterlist.indexOf(l);
+    if (indexInLetterlist != -1) {
+      let newindex = indexInLetterlist + 4;
+      if (newindex >= letterlist.length) {
+        newindex -= letterlist.length;
+      }
+      let newletter = letterlist[newindex];
+      textarr[i] = newletter;
+    }
+  }
+  return textarr.join("");
+}
 
-encode_button.innerHTML = "Lümmel";
+function decode(text) {
+  let textarr = text.split("");
+  for (let i = 0; i < textarr.length; i++) {
+    let l = textarr[i];
+    let indexInLetterlist = letterlist.indexOf(l);
+    if (indexInLetterlist != -1) {
+      let newindex = indexInLetterlist - 4;
+      if (newindex < 0) {
+        newindex += letterlist.length;
+      }
+      let newletter = letterlist[newindex];
+      textarr[i] = newletter;
+    }
+  }
+  return textarr.join("");
+}
 
-setInterval(() => {
-  encode_button.style = "color: red";
+function encode_button_click() {
+  let text = input_area.value;
+  let encodedText = encode(text);
+  output_area.value = encodedText;
+}
+encode_button.addEventListener("click", encode_button_click);
 
-  encode_button.innerHTML = Math.random().toString();
-}, 1000);
+function decode_button_click() {
+  let text = output_area.value;
+  let decodedText = decode(text);
+  input_area.value = decodedText;
+}
+decode_button.addEventListener("click", decode_button_click);
