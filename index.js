@@ -62,16 +62,20 @@ function decode(text) {
   return textarr.join("");
 }
 
-function encode_button_click() {
+function encodeEvent() {
   let text = input_area.value;
   let encodedText = encode(text);
   output_area.value = encodedText;
 }
-encode_button.addEventListener("click", encode_button_click);
+encode_button.addEventListener("click", encodeEvent);
 
-function decode_button_click() {
+function decodeEvent() {
   let text = output_area.value;
   let decodedText = decode(text);
   input_area.value = decodedText;
 }
-decode_button.addEventListener("click", decode_button_click);
+decode_button.addEventListener("click", decodeEvent);
+
+// Wenn wir die Buttons weg sollen dann aktivieren
+// input_area.addEventListener("input", encodeEvent);
+// output_area.addEventListener("input", decodeEvent);
