@@ -1,5 +1,3 @@
 # Caesar Code
-
-Eine Website zum Verschlüsseln von Nachrichten. Mithilfe des Caesar Codes, also eine Verschiebung der Buchstaben um den Faktor 4 im Alphabet.
-Unter diesem Link ist die Website verfügbar:
-https://luftikus4life.github.io/CaesarCode/
+# A website for encrypting messages. Using the Caesar Code, i.e. shifting the letters by a factor of 4 in the alphabet. 
+# The website is available at this link: https://luftikus4life.github.io/CaesarCode/
